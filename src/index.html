@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>エトハエムエックス</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+    <button hx-get="/data" hx-target="[data-list]" hx-swap="innerHTML">
+      get data
+    </button>
+    <button hx-delete="/reset" hx-target="[data-list]" hx-swap="innerHTML">
+      reset data
+    </button>
+    <form>
+      <input type="text" name="value" />
+      <button hx-post="/data" hx-target="[data-list]" hx-swap="innerHTML">
+        post data
+      </button>
+    </form>
+    <div>
+      <h2>data list</h2>
+      <ul data-list></ul>
+    </div>
+  </body>
+</html>
