@@ -6,6 +6,11 @@
     <title>エトハエムエックス</title>
   </head>
   <body>
+    <style>
+      :disabled {
+        background-color: darkred;
+      }
+    </style>
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
     <button hx-get="/data" hx-target="[data-list]" hx-swap="innerHTML">
       get data
@@ -13,6 +18,17 @@
     <button hx-delete="/reset" hx-target="[data-list]" hx-swap="innerHTML">
       reset data
     </button>
+    <button hx-get="/wait" hx-target="[data-list]" hx-disabled-elt="this">
+      wait
+    </button>
+    <button
+      hx-get="/data"
+      hx-target="[data-list]"
+      hx-prompt="Hx-Promptヘッダーに入力値を含むらしい"
+    >
+      prompt get
+    </button>
+
     <form>
       <input type="text" name="value" />
       <button hx-post="/data" hx-target="[data-list]" hx-swap="innerHTML">

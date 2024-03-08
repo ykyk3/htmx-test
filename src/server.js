@@ -46,6 +46,11 @@ fastify.delete("/reset", async (request, reply) => {
   return createResponse(cache);
 });
 
+fastify.get("/wait", async (request, reply) => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  return createResponse(cache);
+});
 function createResponse(data) {
   console.log(data);
   return data
@@ -55,7 +60,7 @@ function createResponse(data) {
           <form>
             <input name="id" value="${id}" readonly />
             <input hx-put="data" hx-trigger="input" hx-target="[data-list]" hx-swap="innerHTML" name="value" value="${value}"/>
-            <i hx-delete="data" hx-target="[data-list]" hx-swap="innerHTML">X</i>
+            <i hx-delete="data" hx-target="[data-list]" hx-swap="innerHTML" hx-confirm="削除しますか?">X</i>
           </form>
         </li>`;
     })
